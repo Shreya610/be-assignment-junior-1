@@ -2,7 +2,7 @@
 development:
 
   encoding: utf8
-  adapter: sqlite3
+  adapter: postgresql
   database: db/splitwise
   pool: 5
   timeout: 5000
@@ -10,9 +10,8 @@ development:
 production:
 
   encoding: utf8
-  adapter: sqlite3
+  adapter: postgresql
   database: db/splitwise
   pool: 5
-  timeout: 5000
-~                                                                                                                                                                                                           
+  timeout: 5000                                                                                                                                                                                             
 
