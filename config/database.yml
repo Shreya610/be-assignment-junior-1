@@ -6,12 +6,10 @@ development:
   database: db/splitwise
   pool: 5
   timeout: 5000
-
 production:
 
   encoding: utf8
   adapter: postgresql
   database: db/splitwise
   pool: 5
-  timeout: 5000                                                                                                                                                                                             
-
+  timeout: 5000

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users
   resources :user_expenses
   resources :settle_up_expenses
+  resources :shared_expenses_between_users 
 end

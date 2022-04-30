@@ -7,7 +7,7 @@ class CreateUserExpense < ActiveRecord::Migration[6.1]
       t.string :status
       t.decimal :owes_you_amount
       t.references :who_to_pay_user, null:false, foreign_key: {to_table: :users}
-      t.references :name_of_user
+      t.string :name_of_user
       t.timestamps
     end
   end
