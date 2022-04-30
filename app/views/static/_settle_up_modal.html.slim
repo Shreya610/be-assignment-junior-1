@@ -1,0 +1,26 @@
+#settleUpModal.modal.fade aria-hidden="true" aria-labelledby="settleUpLabel" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#expenseModalLabel.modal-title Settle Up
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
+      .modal-body
+        = simple_form_for(SettleUpExpense.new, url: '/settle_up_expense',  method: 'post', html: {autocomplete:"off"}) do |f|
+          .form-group.mb-4
+            .form-floating
+              = f.input :amount, as: :decimal, input_html: { autocomplete: 'off', class: 'form-control', id: 'floatingInput'}, label: false, wrapper: false
+              label for="floatingInput" Enter Amount
+
+            .form-floating
+              = f.select :who_paid_id, @users.map { |t| [t["name"],t['id']]}, {}, class: "form-control"
+              label Select Payer
+
+            .form-floating
+              = f.select :to_whom_id, @users.map { |t| [t["name"],t['id']]}, {}, class: "form-control"
+              label Select recipient
+              = f.button :button, "Submit", class: "w-100 btn btn-lg btn-primary", data: { button_name: "Submit"}
+
+      .modal-footer
+        button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
+
+

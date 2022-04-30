@@ -2,48 +2,41 @@
   aside.side-bar-area
     .friends-list
       p.friends-list-header FRIENDS
-      a.friend-name anbu
-      a.friend-name barath
+      =render 'users/index'
   .main-area
     .top-bar
       h1.top-bar-title Dashboard
       .top-bar-actions
-        button.btn.btn-primary type="button"  Add an expense
-        button.btn.btn-secondary type="button"  Settle up
+        button.btn.btn-primary type="button" data-bs-toggle="modal" data-bs-target="#expenseModal"  Add an expense
+        button.btn.btn-primary type="button" data-bs-toggle="modal" data-bs-target="#settleUpModal"  Settle up
+
     .expenses-list
+     - @expenses.each do |expense|
+
       .expense-item
         .item-lhs
-          p SEP 30
-          p Hello
+          p #{expense['created_at']}
+          p #{expense['description']}
         .item-rhs
           .you-details
             p you paid
-            p $23.00
+            p ₹ #{expense['amount']}
           .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
+            p #{expense['name']} owes you
+            p ₹ #{expense['owes_you_amount']}
+     - @settle.each do |settleup|
       .expense-item
         .item-lhs
-          p SEP 30
-          p Hello
+          p #{settleup['created_at']}
+          p Settle Up Charges
         .item-rhs
           .you-details
+
             p you paid
-            p $23.00
+            p ₹#{settleup['amount']} to #{settleup['to_whom_name']}
           .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
+            p
+
+
+=render 'static/expense_modal'
+=render 'static/settle_up_modal'
